@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>DevOps in mBank</title>
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/mbank.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" type="text/css" href="css/venezia.css">
+        
+        <link type="text/css" rel="stylesheet" href="css/shCoreDefault.css"/>
+        <link type="text/css" rel="stylesheet" href="css/shThemeRDark.css"/>
+        <style>
+        .syntaxhighlighter {
+          width: 100% !important;
+          margin: 1em 0 1em 0 !important;
+          position: relative !important;
+          overflow: hidden !important;
+          font-size: 0.75em !important; 
+        }
+        </style>
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    </head>
+
+    <body>
+        <header id="header">
+
+            <div class="container">
+                <h1 class="logo">
+                    <a href="#" class="logo-link" tabindex="-1">
+                        <img src="css/Content/gfx/logo_nmb.gif" alt="mBank logo" title="mBank logo" class="logo-image"/>
+                    </a>
+                </h1>
+                <div id="user-profile">
+                    <a href="#" class="user-name NmB-owner long-name" tabindex="-1">
+                        Team NmB
+                    </a>
+                    <nav id="user-profile-navigation">
+                        <ul>
+                        <li>
+                            <a href="#" onclick="return false;" class="user-profile-completness" tabindex="-1" style="visibility: visible">Wiadomości
+                            <span id="gmfcounterlink" class="not-read-messages-amount" style="display: inline;"><span>1</span></span></a>
+                        </li>
+                        <li><a href="#" onclick="return false;" class="user-profile-messages" tabindex="-1">Wiadomości</a></li>
+                        <li><a href="#" onclick="return false;" class="user-profile-settings" tabindex="-1">Ustawienia</a></li>
+                        </ul>
+                    </nav>
+                    <div id="messageBoxDiv" class="rtm-commercial messages-top-3">
+                        <ul id="messageBoxList"></ul>
+                        <div id="noMessagesDiv" class="notification-up">
+                            <span class="text">Brak wiadomości</span>
+                        </div>
+                        <div id="showAllMessages" class="notification-down"><a href="#inbox"><span class="text">Zobacz wszystkie</span></a></div>
+                    </div>
+                    <div id="gmfDiv" class="rtm-commercial gmf-top-3">
+                        <ul id="gmfList"></ul>
+                        <div id="noGmfDiv" class="notification-up">
+                            <span class="text">Brak wiadomości</span>
+                        </div>
+                        <div id="showAllGmf" class="notification-down"><a href="#gamification"><span class="text">Twoje odznaki</span></a></div>
+                    </div>
+
+                    <div class="user-photo-box">
+                        <img src="css/Content/gfx/u/9_medium.PNG" width="121" height="121" class="user-photo" alt="Zdjęcie użytkownika"/>
+                    </div>
+
+                    <nav id="accounts-selector">
+                        <div>
+                            <ul>
+                                <li>
+                                    <div class="selected-account">Produkty własne</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <a id="logoutButton" onclick="javascript:Ebre.Venezia.AppLogout(true)" class="logout-link" tabindex="-1">
+                        <span class="text">Wyloguj</span>
+                        <span class="btn-red-gradient btn-round"><i class="icon-white-logout"></i></span>
+                    </a>
+                </div>
+                <nav id="main-nav">
+
+                    <script type="text/javascript">
+                        
+                    </script>
+
+                    <ul class="nav-horizontal first-level">
+                        <li class="top-menu active">
+                            <a href="#" onclick="return false" class="btn-huge btn-gray-gradient " tabindex="-1">Project</a>
+                            <ul class="nav-horizontal second-level">
+                                <li class="sub-item active">
+                                    <a href="#/" class="sub-item-a" tabindex="-1">Desktop</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+                                <li class="sub-item">
+                                    <a href="#/story" class="sub-item-a" tabindex="-1">The story</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+                                <li class="sub-item">
+                                    <a href="#/somenumbers" class="sub-item-a" tabindex="-1">Some numbers</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="top-menu left-part-end ">
+                            <a href="#" onclick="return false" class="btn-huge btn-gray-gradient btn-gray-gradient-muted" tabindex="-1"> Continues build</a>
+
+                            <ul class="nav-horizontal second-level">
+                                <li class="sub-item active">
+                                    <a href="#/ci-tools" class="sub-item-a" tabindex="-1">Build process</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+
+                                <li class="sub-item">
+                                    <a href="#/artifact-sharing" class="sub-item-a" tabindex="-1">Artifact Sharing</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="top-menu">
+                            <a href="#" onclick="return false" class="btn-huge btn-gray-gradient btn-gray-gradient-muted" tabindex="-1">Enviroments</a>
+                            <ul class="nav-horizontal second-level">
+                                <li class="sub-item active">
+                                    <a href="#/tokenization" class="sub-item-a" tabindex="-1">Tokenization</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+
+                                <li class="sub-item">
+                                    <a href="#/ps_env" class="sub-item-a" tabindex="-1">Installation</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+
+                                <li class="sub-item">
+                                    <a href="#/log-chaos" class="sub-item-a" tabindex="-1">Log chaos</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+
+                                
+                            </ul>
+                        </li>
+                        <li class="top-menu last-child">
+                            <a href="#" onclick="return false" class="btn-huge btn-gray-gradient btn-gray-gradient-muted" tabindex="-1">Sum up</a>
+                            <ul class="nav-horizontal second-level">
+                                <li class="sub-item active">
+                                    <a href="#/end" class="sub-item-a" tabindex="-1">The end</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+        </header>
+        <div id="noresources" class="nocss" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: white; z-index: 100000">
+            <div style=" position: absolute;top: 50%;left: 50%;margin-top: -100px;margin-left: -300px;width: 600px;height: 200px; background-color: white; z-index: 100000; line-height: 30px;">
+                <a href="http://www.mbank.pl/" title="mBank"><img src="css/Content/gfx/logo_nmb.gif" alt="mBank"></a>
+                <p>Nastąpił bład podczas pobierania zasobów mBanku. Mogły one zostać zablokowane przez firewall, proxy albo konfigurację przeglądarki.  
+                Naciśnij Ctrl+F5 lub Ctrl+Shift+F5 by spróbować jeszcze raz</p>
+                
+                <p><b style="font-weight:bold;">Albo naciśnij dowolny klawisz. W końcu to prezentacja a nie system transakcyjny ;)</b></p>
+                
+            </div>
+        </div>
+        <div class="reveal">
+
+           <div class="slides">
+                <section title="begin" data-markdown="modules/begin/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+
+                <section title="story" data-markdown="modules/story/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+
+                <section title="somenumbers" data-markdown="modules/somenumbers/external.html" data-transition="linear" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+
+                <section title="ci-tools" data-markdown="modules/ci-tools/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+
+                <section title="artifact-sharing" data-markdown="modules/artifact-sharing/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+
+                <section title="tokenization" data-markdown="modules/tokenization/external.html" data-transition="page" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat" data-background-transition="page"></section>
+
+                <section title="ps_env" data-markdown="modules/ps_env/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat" data-transition="zoom" data-background-transition="zoom"></section>
+
+                <section title="log-chaos" data-markdown="modules/log-chaos/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat" data-transition="zoom" data-background-transition="zoom"></section>
+
+                <section title="end" data-markdown="modules/end/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+        <script src="js/jquery-2.0.3.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+                keyboard: true,
+                overview: true,
+                
+                height: "100%",
+                //width: "100%",
+                
+                // Factor of the display size that should remain empty around the content
+                margin: 0.1,
+
+                // Bounds for smallest/largest possible scale to apply to content
+                minScale: 0.2,
+                maxScale: 1.0,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+                backgroundTransition: 'default',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+            Reveal.addEventListener( 'nmbProfiler', function() {
+                // TODO: Sprinkle magic
+                var xx = new nmbNetwork();
+                xx.start();
+            }, false );
+            
+            Reveal.addEventListener( 'nmbError', function() {
+                // TODO: Sprinkle magic
+                document.getElementById("noresources").className = "";
+                /*$(document).keyup(function (e) {
+                    document.getElementById("noresources").className = "nocss";
+                });*/
+                $(document).on('keydown.nmberror', function() { 
+                    $('#noresources').addClass("nocss");
+                    $(document).off('keydown.nmberror');
+                });
+            }, false );
+            Reveal.addEventListener( 'nmbProfilerdemo', function() {
+                new juicebox({
+                    backgroundColor:'rgba(0,0,0,.9)',
+                    xbackgroundColor:'fff',
+                    containerid:'juicebox-nmbprofler-container',
+                    galleryHeight:'50%',
+                    galleryWidth:'100%',
+                    themeUrl:'modules/profiling/nmbprofiler/jbcore/classic/theme.css',
+                    baseURL:'modules/profiling/nmbprofiler/'
+                });
+            }, false );
+            
+            $(function () {
+                
+            });
+
+        </script>
+
+        
+        <script>
+        $(function () {
+            //click handler on small sub links
+            $('.sub-item-a').click(function (e, forced) {
+                window.location.hash = "/" + $('.sub-item-a').index($(this));
+                return false;
+            });
+            //click handler on big buttons
+            $('.top-menu').click(function () {
+                //unset currently active menu
+                var currentActive = $('.top-menu.active');
+                currentActive.removeClass('active').find('a').addClass('btn-gray-gradient-muted');
+                currentActive.children('.second-level').find('a').attr('tabindex', -1);
+                var l = $(this);
+                l.addClass('active').find('a').removeClass('btn-gray-gradient-muted');
+                //trigger click on the first anchor element
+                l.find('.second-level').find('a:first').trigger('click').trigger('focus');
+                l.find('.second-level').find('a').attr('tabindex', 1);
+            });
+            var highlightMenu = function () {
+                try {
+                    var slide = $(Reveal.getCurrentSlide());
+                    var section = null;
+                    do {
+                        var title = slide.attr("title");
+                        if (title) {
+                            section = title;
+                        } else {
+                            if (slide.parent().prop("tagName").toLowerCase() == "section") {
+                                slide = slide.parent();
+                            } else {
+                                section = "/";
+                            }
+                        }
+                    } while (section == null);
+                    console.log(section);
+                    //$('.sub-item-a').parent().removeClass('active');
+                    $('.sub-item.active').removeClass('active');
+
+                    var active = $('a[href$="' + section + '"]');
+                    if (active.length == 0)
+                        active = $('.sub-item-a').first();
+                    active.parent().addClass('active');
+                    $('.top-menu').removeClass('active').find('a').addClass('btn-gray-gradient-muted');
+                    active.closest('.top-menu').first().addClass('active').find('a').removeClass('btn-gray-gradient-muted');
+                } catch (x) { }
+            };
+            highlightMenu();
+            if ("onhashchange" in window) {
+                $(window).on('hashchange', function (e) {
+                    window.setTimeout(function () {
+                        highlightMenu();
+                    }, 50);
+                });
+            }
+
+            //sets tabindex
+            $('.top-menu').children('a').each(function () {
+                $(this).attr('tabindex', 0);
+            });
+            $('.second-level').find('a').each(function () {
+                $(this).attr('tabindex', 1);
+            });
+            $('a:not(:visible)').attr('tabindex', -1);
+        });
+        </script>
+        
+        <script type="text/javascript" src="js/scripts/shCore.js"></script>
+        <script type="text/javascript" src="js/scripts/shBrushJScript.js"></script>
+        <script type="text/javascript" src="js/scripts/shBrushCSharp.js"></script>
+        <script type="text/javascript" src="js/scripts/shBrushCss.js"></script>
+        <script type="text/javascript" src="js/scripts/shBrushXml.js"></script>
+        
+        <script type="text/javascript">
+            SyntaxHighlighter.defaults['gutter'] = false;
+            SyntaxHighlighter.all();
+        </script>
+
+    </body>
+
+</html>

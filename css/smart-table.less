@@ -1,0 +1,69 @@
+/* base rules for smart-table, more inside themes */
+
+.smart-table {
+	width: 100%;
+	cursor: default;
+
+	&.special-order {
+		.order-desc, .order-asc {
+			display: none;
+		}
+	}
+}
+
+.smart-table .smart-table-headrow .order-desc {
+  background-repeat: no-repeat;
+  background-position: -60px -3px;
+	visibility: hidden;
+}
+
+.smart-table .smart-table-go-to-cell {
+	width: 30px;
+}
+
+.smart-table .smart-table-headrow .order-asc {
+  background-repeat: no-repeat;
+  background-position: 5px -3px;
+	visibility: hidden;
+}
+
+.smart-table .smart-table-headcell.current-sort .order-asc,
+.smart-table .smart-table-headcell.current-sort .order-desc {
+	visibility: visible;
+}
+
+.smart-table.row-number-no-bgimg .row-number {
+  background-image: none !important;
+}
+
+.smart-table-headcell-container {
+  position: relative;
+	padding-left:4px;
+}
+
+.smart-table-headcell .smart-column-options {
+	background-repeat: no-repeat;
+	background-position: -194px -112px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.smart-table-headcell {
+	position:relative;
+}
+
+.smart-table-headcell .resize-handler {
+	cursor: col-resize;
+	position:absolute;
+	right:-1px;
+	top:-1px;
+	width:7px;
+	height:18px;
+}
+
+.smart-table-headcell-container.tools-cell {
+	text-align: center;
+	padding-left: 0px;
+	cursor: pointer;
+}
