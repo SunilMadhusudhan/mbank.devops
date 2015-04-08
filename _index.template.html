@@ -32,7 +32,7 @@
         </style>
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
         <script>
-            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+            document.write( '<link rel="stylesheet" h'+'ref="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
 
         <!--[if lt IE 9]>
@@ -184,27 +184,17 @@
             </div>
         </div>
         <div class="reveal">
-
-           <div class="slides">
-                <section title="begin" data-markdown="modules/begin/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
-
-                <section title="story" data-markdown="modules/story/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
-
-                <section title="somenumbers" data-markdown="modules/somenumbers/external.html" data-transition="linear" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
-
-                <section title="ci-tools" data-markdown="modules/ci-tools/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
-
-                <section title="artifact-sharing" data-markdown="modules/artifact-sharing/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
-
-                <section title="tokenization" data-markdown="modules/tokenization/external.html" data-transition="page" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat" data-background-transition="page"></section>
-
-                <section title="ps_env" data-markdown="modules/ps_env/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat" data-transition="zoom" data-background-transition="zoom"></section>
-
-                <section title="log-chaos" data-markdown="modules/log-chaos/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat" data-transition="zoom" data-background-transition="zoom"></section>
-
-                <section title="end" data-markdown="modules/end/external.html" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat"></section>
+            <div class="slides">
+                <inline src="modules/begin/external.html" />
+                <inline src="modules/story/external.html" />
+                <inline src="modules/somenumbers/external.html" />
+                <inline src="modules/ci-tools/external.html" />
+                <inline src="modules/artifact-sharing/external.html" />
+                <inline src="modules/tokenization/external.html" />
+                <inline src="modules/log-chaos/external.html" />
+                <inline src="modules/end/external.html" />
+                
             </div>
-
         </div>
 
         <script src="lib/js/head.min.js"></script>

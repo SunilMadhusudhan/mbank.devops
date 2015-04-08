@@ -3,22 +3,35 @@ module.exports = (grunt) ->
 
     grunt.initConfig
 
+        inline:
+            dist:
+                src: '_index.template.html',
+                dest: 'index.html'
+
         watch:
 
             livereload:
                 options:
                     livereload: true
                 files: [
-                    'index.html'
-                    'slides/{,*/}*.{md,html}'
-                    'js/*.js'
+                    '_index.template.html'
+                    'css/**'
+                    'plugin/**'
+                    'modules/**'
+                    'js/**'
+                    'lib/**'
                 ]
+                tasks: ['buildIndex']
 
             index:
                 files: [
-                    'templates/_index.html'
-                    'templates/_section.html'
-                    'slides/list.json'
+                    '_index.template.html'
+                    'css/**'
+                    'plugin/**'
+                    'modules/**'
+                    'js/**'
+                    'lib/**'
+                    '_index.template.html'
                 ]
                 tasks: ['buildIndex']
 
@@ -26,10 +39,6 @@ module.exports = (grunt) ->
                 files: ['Gruntfile.coffee']
                 tasks: ['coffeelint']
 
-            jshint:
-                files: ['js/*.js']
-                tasks: ['']
-        
         connect:
 
             livereload:
@@ -52,12 +61,8 @@ module.exports = (grunt) ->
 
             all: ['Gruntfile.coffee']
 
-        jshint:
 
-            options:
-                jshintrc: '.jshintrc'
 
-            all: ['js/*.js']
 
         copy:
 
@@ -65,9 +70,11 @@ module.exports = (grunt) ->
                 files: [{
                     expand: true
                     src: [
-                        'slides/**'
-                        'bower_components/**'
+                        'css/**'
+                        'plugin/**'
+                        'modules/*/img/**'
                         'js/**'
+                        'lib/**'
                     ]
                     dest: 'dist/'
                 },{
@@ -83,27 +90,16 @@ module.exports = (grunt) ->
     # Load all grunt tasks.
     require('load-grunt-tasks')(grunt)
 
-    grunt.registerTask 'buildIndex',
-        'Build index.html from templates/_index.html and slides/list.json.',
-        ->
-            indexTemplate = grunt.file.read 'templates/_index.html'
-            sectionTemplate = grunt.file.read 'templates/_section.html'
-            #slides = grunt.file.readJSON 'slides/list.json'
+    grunt.loadNpmTasks('grunt-inline')
 
-            html = grunt.template.process indexTemplate
-            #, data:
-            #    slides:
-            #        slides
-            #    section: (slide) ->
-            #        grunt.template.process sectionTemplate, data:
-            #            slide:
-            #                slide
-            grunt.file.write 'index.html', html
+    grunt.registerTask 'buildIndex',
+        'Build index.html.',[
+            'inline'
+        ]
 
     grunt.registerTask 'test',
         '*Lint* javascript and coffee files.', [
             'coffeelint'
-            'jshint'
         ]
 
     grunt.registerTask 'serve',
