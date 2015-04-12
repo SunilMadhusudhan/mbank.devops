@@ -8,7 +8,7 @@
 		<p class="fragment">And same <u>errors</u> are <b>repeated</b>:)</p>
 	</section>
 	<section>
-		<h2>Ancient</h2>
+		<h2>Ancient (before 2000)</h2>
 		<p>Usually it begin like this:</p>
 		<img style="max-width:45%; vertical-align:middle" src="modules/artifact-sharing/img/libs.png" />
 		&nbsp;or&nbsp;
@@ -25,7 +25,91 @@
 		<p style="color:red;">Cons</p>
 		<ul>
 			<li>Version control systems is heavy</li>
-			<li>Difficult updates management</li>;
+			<li>Difficult updates management</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Middle ages (2000-2010)</h2>
+		<ul>
+			<li>FAROOT - We move artifacts to shared space</li>
+			<li>BTW: Maven was created</li>
+			<li>
+				More or less dependency managment was like:
+				<img src="modules/artifact-sharing/img/automation.gif" />
+			</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Problems of Middle ages</h2>
+		<ul>
+			<li>Difficult to get <b>LATEST</b> version</li>
+			<li>When should we get dependencies: 
+				<ul>
+					<li>Once?</li>
+					<li>Build?</li>
+					<li>On request?</li>
+				</ul>
+			 </li>
+			 <li>If I have LATEST version which exactly version I got:
+			 	<ul>
+			 		<li>Build time LATEST?</li>
+			 		<li>Installation time LATEST?</li>
+			 	</ul>
+			 </li>
+			 <li>How to manage security hot-fixes like: 3.0.0.1?</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Renaissance</h2>
+		<p>A lot of dependency management tools like:</p>
+		<ul>
+			<li><b>NuGet</b></li>
+			<li>Maven</li>
+			<li>Npm</li>
+			<li>Bower</li>
+			<li>[...]</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Problems of NuGet</h2>
+		<code>
+        	<pre class="brush: xml;">
+ &lt;ItemGroup&gt;
+    &lt;Reference Include=&quot;Autofac, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL&quot;&gt;
+      &lt;SpecificVersion&gt;False&lt;/SpecificVersion&gt;
+      &lt;HintPath&gt;..\packages\Autofac.3.3.1\lib\net40\Autofac.dll&lt;/HintPath&gt;
+    &lt;/Reference&gt;
+        	</pre>
+		</code>
+	</section>
+	<section>
+		<h2>Ripple == NuGet++</h2>
+		<ul>
+			<li>Two kinds of dependencies: float / fixed</li>
+			<li>Versions declared on the solution ripple.config file level</li>
+			<li>But still we use <b>NuGet packages</b></li>
+			<li>Dependencies extracted to directories with no version:
+				<code>
+        			<pre class="brush: xml;">
+ &lt;ItemGroup&gt;
+    &lt;Reference Include=&quot;Autofac, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL&quot;&gt;
+      &lt;SpecificVersion&gt;False&lt;/SpecificVersion&gt;
+      &lt;HintPath&gt;..\packages\Autofac\lib\net40\Autofac.dll&lt;/HintPath&gt;
+    &lt;/Reference&gt;
+        			</pre>
+				</code>
+			</li>
+		</ul>
+
+	</section>
+	<section>
+	<h3>The future</h3>
+		<ul>
+			<li>Ripple ideas are implmented in vNext</li>
+			<li>Project.json allows to specify versions with wildcards or empty for latest<br/>
+			<img id="grumpy-cat" src="modules/artifact-sharing/img/packagejson.png" alt="packages.json" />
+			</li>
+			
 		</ul>
 	</section>
 </section>
