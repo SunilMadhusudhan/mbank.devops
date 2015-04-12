@@ -118,12 +118,13 @@ if [ -e "$DEPLOYMENT_SOURCE/bower.json" ]; then
 fi
 
 # 4. Run grunt
-if [ -e "$DEPLOYMENT_SOURCE/Gruntfile.js" ]; then
+if [ -e "$DEPLOYMENT_SOURCE/Gruntfile.coffee" ]; then
   eval $NPM_CMD install grunt-cli
   exitWithMessageOnError "installing grunt failed"
-  ./node_modules/.bin/grunt --no-color clean common dist
+  ./node_modules/.bin/grunt --no-color dist
   exitWithMessageOnError "grunt failed"
 fi
+
 
 # 5. KuduSync to Target
 "$KUDU_SYNC_CMD" -v 500 -f "$DEPLOYMENT_SOURCE/dist" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
