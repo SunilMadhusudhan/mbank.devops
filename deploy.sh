@@ -105,12 +105,14 @@ selectNodeVersion
 
 # 2. Install npm packages
 if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
+  echo Running npm
   eval $NPM_CMD install
   exitWithMessageOnError "npm failed"
 fi
 
 # 3. Install bower packages
 if [ -e "$DEPLOYMENT_SOURCE/bower.json" ]; then
+  echo Running bower
   eval $NPM_CMD install bower
   exitWithMessageOnError "installing bower failed"
   ./node_modules/.bin/bower install
@@ -119,9 +121,10 @@ fi
 
 # 4. Run grunt
 if [ -e "$DEPLOYMENT_SOURCE/Gruntfile.coffee" ]; then
+  echo Running grunt
   eval $NPM_CMD install grunt-cli
   exitWithMessageOnError "installing grunt failed"
-  ./node_modules/.bin/grunt --no-color dist
+  ./node_modules/.bin/grunt --no-color clean dist
   exitWithMessageOnError "grunt failed"
 fi
 

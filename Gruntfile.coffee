@@ -1,7 +1,13 @@
 # Generated on 2015-03-21 using generator-reveal 0.4.0
 module.exports = (grunt) ->
 
+    grunt.loadNpmTasks "grunt-contrib-clean"
+
     grunt.initConfig
+        clean: [
+            "dist"
+        ]
+    	
 
         inline:
             dist:
@@ -91,6 +97,7 @@ module.exports = (grunt) ->
     require('load-grunt-tasks')(grunt)
 
     grunt.loadNpmTasks('grunt-inline')
+    
 
     grunt.registerTask 'buildIndex',
         'Build index.html.',[
