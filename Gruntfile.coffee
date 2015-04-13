@@ -79,6 +79,8 @@ module.exports = (grunt) ->
                         'css/**'
                         'plugin/**'
                         'modules/*/img/**'
+                        'modules/*/js/**'
+                        'modules/*/css/**'
                         'js/**'
                         'lib/**'
                     ]
