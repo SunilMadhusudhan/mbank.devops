@@ -1,0 +1,30 @@
+<section title="architecture" data-state="architecture" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat">
+	<section>
+		<h3>NmB architecture in 1000 words</h3>
+    	<link rel="stylesheet" href="modules/arch/css/joint.css" />
+    	<div id="paper"></div>
+	</section>
+	<script src="modules/arch/js/joint/smil.user.js"></script>
+    <script src="modules/arch/js/joint/joint.js"></script>
+    <script src="modules/arch/js/joint/joint.shapes.pn.js"></script>
+    <script src="modules/arch/js/joint/joint.shapes.org.js"></script>
+    <script src="modules/arch/js/joint/joint.shapes.uml.js"></script>
+    <script src="modules/arch/js/joint/joint.shapes.erd.js"></script>
+    <script src="modules/arch/js/joint/pn.js"></script>
+    <script type="text/javascript">
+    $(function() {
+    	var graph;
+    	var isRunning;
+    	Reveal.addEventListener( 'architecture', function(event) {
+    			console.log(event);
+                if(graph==null)
+                	graph = new nmbNetwork();
+                graph.start();
+            }, false );
+    	Reveal.addEventListener( 'slidechanged', function( event ) {
+    		if(graph!=null)
+    			graph.stop();
+    	} );
+    });
+    </script>
+</section>

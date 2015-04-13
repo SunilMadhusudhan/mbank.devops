@@ -120,6 +120,10 @@
                                     <a href="#/somenumbers" class="sub-item-a" tabindex="-1">Some numbers</a>
                                     <span class="underline-decoration"></span>
                                 </li>
+                                <li class="sub-item">
+                                    <a href="#/architecture" class="sub-item-a" tabindex="-1">Architecture</a>
+                                    <span class="underline-decoration"></span>
+                                </li>
                             </ul>
                         </li>
                         <li class="top-menu left-part-end ">
@@ -188,6 +192,7 @@
                 <inline src="modules/begin/external.html" />
                 <inline src="modules/story/external.html" />
                 <inline src="modules/somenumbers/external.html" />
+                <inline src="modules/arch/external.html" />
                 <inline src="modules/ci-tools/external.html" />
                 <inline src="modules/artifact-sharing/external.html" />
                 <inline src="modules/tokenization/external.html" />
@@ -237,11 +242,6 @@
                     { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
                 ]
             });
-            Reveal.addEventListener( 'nmbProfiler', function() {
-                // TODO: Sprinkle magic
-                var xx = new nmbNetwork();
-                xx.start();
-            }, false );
             
             Reveal.addEventListener( 'nmbError', function() {
                 // TODO: Sprinkle magic
@@ -252,17 +252,6 @@
                 $(document).on('keydown.nmberror', function() { 
                     $('#noresources').addClass("nocss");
                     $(document).off('keydown.nmberror');
-                });
-            }, false );
-            Reveal.addEventListener( 'nmbProfilerdemo', function() {
-                new juicebox({
-                    backgroundColor:'rgba(0,0,0,.9)',
-                    xbackgroundColor:'fff',
-                    containerid:'juicebox-nmbprofler-container',
-                    galleryHeight:'50%',
-                    galleryWidth:'100%',
-                    themeUrl:'modules/profiling/nmbprofiler/jbcore/classic/theme.css',
-                    baseURL:'modules/profiling/nmbprofiler/'
                 });
             }, false );
             
