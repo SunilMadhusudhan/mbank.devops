@@ -1,4 +1,73 @@
 <section title="tokenization" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat">
-	<h2><strong>Tokenization</strong> and Code over Configuration</h2>
-	<h3>TODO</h3>
+	<section>
+		<h2><strong>Tokenization</strong></h2>
+		<br/>
+		<h2>and Code over Configuration</h2>
+	</section>
+	<section>
+		<h2>History</h2>
+		<ul>
+			<li>Machine based configuration</li>
+			<li>All configuration in the repository</li>
+			<li>Templates + environment variables</li>
+		</ul>
+	</section>
+	<section>
+			<code>
+    	    	<pre class="brush: xml;">
+&lt;add name="ContractX" path="X" server="${AppsrvName}" 
+     port="${Core_port}" binding="TCP" 
+     serverThumbPrint="${AppSrvServerThumbPrint}" 
+     clientThumbPrint="${AppSrvClientThumbPrint}"/&gt;</pre>
+			</code>
+			<p style="margin-top:-30px;margin-bottom:-30px"><b>+</b></p>
+			<code>
+    	    	<pre class="brush: xml;">
+&lt;AppsrvName&gt;drev.mbank.pl&lt;/AppsrvName&gt;
+&lt;Core_port&gt;8888&lt;/Core_port&gt;
+&lt;AppSrvServerThumbPrint&gt;29[...]76&lt;/AppSrvServerThumbPrint&gt;
+&lt;AppSrvClientThumbPrint&gt;98[...]84&lt;/AppSrvClientThumbPrint&gt;</pre>
+			</code>
+			<p><b>=</b></p>
+			<code>
+    	    	<pre class="brush: xml;">
+&lt;add name="ContractX" path="X" server="drev.mbank.pl" 
+     port="8888" binding="TCP" 
+     serverThumbPrint="29[...]76" 
+     clientThumbPrint="98[...]84"/&gt;</pre>
+			</code>
+	</section>
+	<section>
+		<h2>Simple endpoint</h2>
+		<p>Endpoint basically needs following informations:</p>
+		<ul>
+			<li>data contract</li>
+			<li>server + port</li>
+			<li>path</li>
+			<li>binding (type) and security</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Simple endpoint</h2>
+				<code>
+        			<pre class="brush: xml;">
+&lt;add name="ContractX" path="X" server="drev.mbank.pl" 
+     port="8888" binding="TCP" 
+     serverThumbPrint="29[...]76" 
+     clientThumbPrint="98[...]84"/&gt;</pre>
+				</code>
+	</section>
+	<section>
+		<p style="color:green;">Pros</p>
+		<ul>
+			<li>Consistent configuration between client and server</li>
+			<li>Configuration is simplified</li>
+			<li>Configuration changes are easy to propagate</li>
+		</ul>
+		<p style="color:red;">Cons</p>
+		<ul>
+			<li>Code changes are difficult to propagate</li>
+			<li>Custom solution</li>
+		</ul>
+	</section>
 </section>
