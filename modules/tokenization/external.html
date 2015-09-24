@@ -5,6 +5,10 @@
 		<h2>and Code over Configuration</h2>
 	</section>
 	<section>
+		<h2>1000 words</h2>
+		<img src="modules/tokenization/img/devops-define-roles.jpg" />
+	</section>
+	<section>
 		<h2>History</h2>
 		<ul>
 			<li>Machine based configuration</li>
@@ -13,29 +17,60 @@
 		</ul>
 	</section>
 	<section>
-			<code>
-    	    	<pre class="brush: xml;">
+		<h2>Tokens in configuration files</h2>
+		<code>
+    	   	<pre class="brush: xml;">
 &lt;add name="ContractX" path="X" server="${AppsrvName}" 
      port="${Core_port}" binding="TCP" 
      serverThumbPrint="${AppSrvServerThumbPrint}" 
      clientThumbPrint="${AppSrvClientThumbPrint}"/&gt;</pre>
-			</code>
-			<p style="margin-top:-30px;margin-bottom:-30px"><b>+</b></p>
-			<code>
-    	    	<pre class="brush: xml;">
+		</code>
+	</section>
+	<section>
+		<h2>Machine files with values</h2>
+		<code>
+    	    <pre class="brush: xml;">
 &lt;AppsrvName&gt;drev.mbank.pl&lt;/AppsrvName&gt;
 &lt;Core_port&gt;8888&lt;/Core_port&gt;
 &lt;AppSrvServerThumbPrint&gt;29[...]76&lt;/AppSrvServerThumbPrint&gt;
 &lt;AppSrvClientThumbPrint&gt;98[...]84&lt;/AppSrvClientThumbPrint&gt;</pre>
 			</code>
-			<p><b>=</b></p>
+	</section>
+	<section>
+		<p>Equation</p>
 			<code>
     	    	<pre class="brush: xml;">
-&lt;add name="ContractX" path="X" server="drev.mbank.pl" 
+&lt;add name="ContractX" path="Something/ABC" server="${AppsrvName}" 
+     port="${Core_port}" binding="TCP" 
+     serverThumbPrint="${AppSrvServerThumbPrint}" 
+     clientThumbPrint="${AppSrvClientThumbPrint}"/&gt;</pre>
+			</code>
+			<p style="margin-top:-35px;margin-bottom:-35px"><b>+</b></p>
+			<code>
+    	    	<pre class="brush: xml;">
+&lt;AppsrvName&gt;XYZ.mbank.pl&lt;/AppsrvName&gt;
+&lt;Core_port&gt;8888&lt;/Core_port&gt;
+&lt;AppSrvServerThumbPrint&gt;29[...]76&lt;/AppSrvServerThumbPrint&gt;
+&lt;AppSrvClientThumbPrint&gt;98[...]84&lt;/AppSrvClientThumbPrint&gt;</pre>
+			</code>
+			<p style="margin-top:-35px;margin-bottom:-35px"><b>=</b></p>
+			<code>
+    	    	<pre class="brush: xml;">
+&lt;add name="ContractX" path="Something/ABC" server="XYZ.mbank.pl" 
      port="8888" binding="TCP" 
      serverThumbPrint="29[...]76" 
      clientThumbPrint="98[...]84"/&gt;</pre>
 			</code>
+	</section>
+	<section>
+		<h2>Configuration in code</h2>
+		<ul>
+			<li>Easy to deploy :)</li>
+			<li>Easy to manage :)</li>
+			<li>Easy to track changes :)</li>
+		</ul>
+		<br/>
+		<div class="fragment">Example WCF biding configuration</div>
 	</section>
 	<section>
 		<h2>Simple endpoint</h2>
@@ -51,7 +86,7 @@
 		<h2>Simple endpoint</h2>
 				<code>
         			<pre class="brush: xml;">
-&lt;add name="ContractX" path="X" server="drev.mbank.pl" 
+&lt;add name="ContractX" path="Something/ABC" server="XYZ.mbank.pl" 
      port="8888" binding="TCP" 
      serverThumbPrint="29[...]76" 
      clientThumbPrint="98[...]84"/&gt;</pre>
@@ -68,6 +103,13 @@
 		<ul>
 			<li>Code changes are difficult to propagate</li>
 			<li>Custom solution</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Where we failed?</h2>
+		<ul>
+			<li>We have 2000+ tokens with lots of duplicates</li>
+			<li>Developers doesn't use then in every day work :(</li>
 		</ul>
 	</section>
 </section>
