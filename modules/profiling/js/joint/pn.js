@@ -1,8 +1,8 @@
-var nmbNetwork = function(elemId) {
+var nmbNetwork = function() {
     var graph = new joint.dia.Graph;
 
     var paper = new joint.dia.Paper({
-        el: $(elemId),
+        el: $('#paper'),
         width: 1000,
         height: 600,
         gridSize: 10,
@@ -77,7 +77,7 @@ var nmbNetwork = function(elemId) {
             size: { width: 90, height: 90 },
             attrs: {
                 text: { text: 'WWW Srv' },
-                image: { 'xlink:href': "modules/arch/css/85px-Server-web.svg.png" }
+                image: { 'xlink:href': "modules/profiling/css/85px-Server-web.svg.png" }
             },
             tokens: 0
         }));
@@ -99,7 +99,7 @@ var nmbNetwork = function(elemId) {
             size: { width: 90, height: 90 },
             attrs: {
                 text: { text: 'App Srv' },
-                image: { 'xlink:href': "modules/arch/css/85px-Server.svg.png" }
+                image: { 'xlink:href': "modules/profiling/css/85px-Server.svg.png" }
             },
             tokens: 0
         }));
@@ -120,7 +120,7 @@ var nmbNetwork = function(elemId) {
             size: { width: 90, height: 90 },
             attrs: {
                 text: { text: '"DB systems"' },
-                image: { 'xlink:href': "modules/arch/css/85px-Server-accounting.svg.png" }
+                image: { 'xlink:href': "modules/profiling/css/85px-Server-accounting.svg.png" }
             },
             tokens: 0
         }));

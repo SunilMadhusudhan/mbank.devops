@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<juiceboxgallery
+	galleryTitle="NmbProfiler offline mode"
+>
+  <image imageURL="images/screen-lista.png"
+	thumbURL="thumbs/screen-lista.png"
+	linkURL="images/screen-lista.png"
+	linkTarget="_blank">
+	<title>NmbProfiler - Wyfiltrowana lista akcji</title>
+  </image>
+  <image imageURL="images/screen-obciazenie.png"
+	thumbURL="thumbs/screen-obciazenie.png"
+	linkURL="images/screen-obciazenie.png"
+	linkTarget="_blank">
+	<title>NmbProfiler - Obciążenie w czasie</title>
+  </image>
+  <image imageURL="images/screen-czaswykonania.png"
+	thumbURL="thumbs/screen-czaswykonania.png"
+	linkURL="images/screen-czaswykonania.png"
+	linkTarget="_blank">
+	<title>NmbProfiler - Średni czas wykonania w czasie</title>
+  </image>
+  
+  <image imageURL="images/screen-rozkladczasuwykonania.png"
+	thumbURL="thumbs/screen-rozkladczasuwykonania.png"
+	linkURL="images/screen-rozkladczasuwykonania.png"
+	linkTarget="_blank">
+	<title>NmbProfiler - Rozkład czasu wykonania</title>
+  </image>
+  <image imageURL="images/screen-listaprobek.png"
+	thumbURL="thumbs/screen-listaprobek.png"
+	linkURL="images/screen-listaprobek.png"
+	linkTarget="_blank">
+	<title>NmbProfiler - Lista próbek</title>
+  </image>
+  <image imageURL="images/screen-probka.png"
+	thumbURL="thumbs/screen-probka.png"
+	linkURL="images/screen-probka.png"
+	linkTarget="_blank">
+	<title>NmbProfiler - Szczegóły próbki</title>
+  </image>
+</juiceboxgallery>

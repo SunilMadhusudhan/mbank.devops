@@ -18,7 +18,7 @@
     	Reveal.addEventListener( 'architecture', function(event) {
     			console.log(event);
                 if(graph==null)
-                	graph = new nmbNetwork();
+                	graph = new nmbNetwork('#paper');
                 graph.start();
             }, false );
     	Reveal.addEventListener( 'slidechanged', function( event ) {

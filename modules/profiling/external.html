@@ -1,0 +1,142 @@
+<section title="nmbprofiler" data-background="css/Content/gfx/bg/bg_content.png" data-background-size="40px" data-background-repeat="repeat">
+	<section>
+		<h2>Spike profiling</h2>
+		<h3>with <strong>MiniProfiler</strong></h3>
+	</section>
+	<section data-state="nmbProfiler">
+		<h3>NmB architecture in 1000 words</h3>
+	    <link rel="stylesheet" href="modules/profiling/css/joint.css" />
+	    <div id="paper2"></div>
+	    <script src="modules/arch/js/joint/smil.user.js"></script>
+    	<script src="modules/arch/js/joint/joint.js"></script>
+    	<script src="modules/arch/js/joint/joint.shapes.pn.js"></script>
+    	<script src="modules/arch/js/joint/joint.shapes.org.js"></script>
+    	<script src="modules/arch/js/joint/joint.shapes.uml.js"></script>
+	    <script src="modules/arch/js/joint/joint.shapes.erd.js"></script>
+	    <script src="modules/arch/js/joint/pn.js"></script>
+	    <script type="text/javascript">
+	    $(function() {
+	    	var graph;
+	    	var isRunning;
+	    	Reveal.addEventListener( 'nmbProfiler', function(event) {
+	    			console.log(event);
+	                if(graph==null)
+	                	graph = new nmbNetwork('#paper2');
+	                graph.start();
+	            }, false );
+	    	Reveal.addEventListener( 'slidechanged', function( event ) {
+	    		if(graph!=null)
+	    			graph.stop();
+	    	} );
+	    });
+	    </script>
+	</section>
+	<section>
+		<h3>So where is the problem?</h3>
+		<ul>
+			<li class="fragment">MVC operations</li>
+			<li class="fragment">AppSrv operations</li>
+			<li class="fragment"><i>Database</i> operations</li>
+			<li class="fragment">Security checks</li>
+			<li class="fragment"><i>External</i> systems</li>
+		</ul>
+	</section>
+	<section>
+		<h3>Distributed Tracing systems</h3>
+		<ul>
+			<li>Google Dapper</li>
+			<li>Zipkin from Twitter</li>
+		</ul>
+	</section>
+	<section>
+		<h3>Dapper 3 design goals</h3>
+		<ul>
+			<li>Low overhead</li>
+			<li>Application-level transparency</li>
+			<li>Scalability</li>
+		</ul>
+		<p class="fragment">Used in every Google product and layer</p>
+	</section>
+	<section>
+		<h3>Zipkin</h3>
+		<table style="width:100%" >
+			<tr>
+				<td style="width:45%">
+					<ul>
+						<li>Created and used by Twitter</li>
+						<li>Based on Google Dapper</li>
+						<li>Open source :)</li>
+					</ul>
+				</td>
+				<td style="width:45%">
+					<a href="modules/profiling/img/zipkin.png" target="_blank">
+						<img style="width:100%" src="modules/profiling/img/zipkin.png"/>
+					</a>
+				</td>
+			</tr>
+		</table>
+		<div class="fragment"><br/>Prepared for <b>Unix/Java</b> based systems :( </div>
+	</section>
+	<section>
+		<h3>The solution - NmbProfiler</h3>
+		<ul>
+			<li>Based on MiniProfiler</li>
+			<li>Had a lot <i>stuff</i> included</li>
+			<li>In MVC level we used it out-of-box</li>
+			<li>Allow to profile every single step of code</li>
+		</ul>
+	</section>
+	<section>
+		<h3>MiniProfiler - all <i>stuff</i></h3>
+		<ul>
+			<li>MVC profiling -> easy optimizations</li>
+			<li>Database profiling-> ADO.NET, EF, Linq-To-SQL, RavenDB and more</li>
+			<li>Many technologies-> .NET, Ruby, Node.js and Go</li>
+			<li>Basic usage is only few lines of code</li>
+			<li>GUI is optional :) </li>
+		</ul>
+	</section>
+	<section>
+		<h3>Our extensions</h3>
+		<ul>
+			<li>Sampling - not every request is profiled</li>
+			<li>GUI for our needs</li>
+			<li>WCF request opaque (BeforeCall+AfterCall)</li>
+			<li>Saved in DB for later analysis</li> 
+			<li>Used in every layer and allow tracing full request</li>
+			<li>Out-of-box for every developer in the project - no single line is needed</li>
+		</ul>
+	</section>
+	<section>
+		<h3>Simple code</h3>
+		<img src="modules/profiling/img/nmbprofier-code.png"/>
+	</section>
+	<section>
+		<h3>1000 words</h3>
+		<img src="modules/profiling/img/miniprofiler.png"/>
+	</section>
+	<section data-state="nmbProfilerdemo">
+		<h3>6*1000 words or more - GUI</h3>
+		<!--START Juicebox EMBED.-->
+		<div id="juicebox-nmbprofler-container"></div>
+		<!-- END Juicebox EMBED -->
+		<script src="modules/profiling/nmbprofiler/jbcore/juicebox.js"></script>
+		<script type="text/javascript">
+			$(function () {
+			Reveal.addEventListener( 'nmbProfilerdemo', function() {
+                new juicebox({
+			    	backgroundColor:'rgba(0,0,0,.9)',
+			    	xbackgroundColor:'fff',
+			    	containerid:'juicebox-nmbprofler-container',
+			    	galleryHeight:'50%',
+			    	galleryWidth:'100%',
+			    	themeUrl:'modules/profiling/nmbprofiler/jbcore/classic/theme.css',
+			    	baseURL:'modules/profiling/nmbprofiler/'
+			    });
+            }, false );	
+			});
+		</script>
+		
+	</section>
+</section>
+
